@@ -2,16 +2,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.hillert</groupId>
-  <artifactId>image-filters-4j</artifactId>
+  <groupId>com.pembana.imaging</groupId>
+  <artifactId>pembana-image-filters</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>Image Processing Filters for Java</name>
+  <name>Pembana™ Image Filters</name>
   <url>https://github.com/ghillert/image-filters-4j</url>
   <inceptionYear>2025</inceptionYear>
 
   <description>
-    A collection of image processing filters implemented in Java.
+    Java image-processing filters maintained by Pembana™, based on Jerry Huxtable’s JHLabs filters.
   </description>
 
   <licenses>

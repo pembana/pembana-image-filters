@@ -1,13 +1,13 @@
 :main-release-version: 1.0.0-M1
 :main-snapshot-version: 1.0.0-SNAPSHOT
 
-= image-filters-4j
+= Pembana™ Image Filters
 
 image:https://github.com/ghillert/image-filters-4j/actions/workflows/maven.yml/badge.svg?branch=main[Java CI with Maven, link="https://github.com/ghillert/image-filters-4j/actions/workflows/maven.yml"]
-image:https://img.shields.io/maven-central/v/com.hillert/image-filters-4j[Maven Central Version]
+image:https://img.shields.io/maven-central/v/com.pembana.imaging/pembana-image-filters[Maven Central Version]
 image:https://img.shields.io/github/license/ghillert/image-filters-4j[GitHub License]
 
-Image Processing Filters for Java
+Java image-processing filters maintained by Pembana™, based on Jerry Huxtable’s JHLabs filters.
 
 I did not see any Mavenized version of Jerry Huxtable's *Java Image Processing Classes*.
 
@@ -24,8 +24,8 @@ To use the filters in your Maven project, add the following dependency to your `
 [source,xml,subs="verbatim,quotes,attributes"]
 ----
 <dependency>
-    <groupId>com.hillert</groupId>
-    <artifactId>image-filters-4j</artifactId>
+    <groupId>com.pembana.imaging</groupId>
+    <artifactId>pembana-image-filters</artifactId>
     <version>{main-release-version}</version>
 </dependency>
 ----
@@ -34,7 +34,7 @@ If you are using Gradle, add the following to your `build.gradle`:
 
 [source,groovy,subs="attributes"]
 ----
-implementation 'com.hillert:image-filters-4j:{main-release-version}'
+implementation 'com.pembana.imaging:pembana-image-filters:{main-release-version}'
 ----
 
 ==== Using Snapshot Versions
@@ -60,8 +60,8 @@ To use snapshot versions, add the following dependency to your `pom.xml`:
 [source,xml,subs="verbatim,quotes,attributes"]
 ----
 <dependency>
-    <groupId>com.hillert</groupId>
-    <artifactId>image-filters-4j</artifactId>
+    <groupId>com.pembana.imaging</groupId>
+    <artifactId>pembana-image-filters</artifactId>
     <version>{main-snapshot-version}</version>
 </dependency>
 ----
@@ -70,7 +70,7 @@ For Gradle, add the following to your `build.gradle`:
 
 [source,groovy,subs="attributes"]
 ----
-implementation 'com.hillert:image-filters-4j:{main-snapshot-version}'
+implementation 'com.pembana.imaging:pembana-image-filters:{main-snapshot-version}'
 ----
 
 === Usage
