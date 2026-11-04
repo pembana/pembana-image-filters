@@ -7,7 +7,7 @@
   <version>1.0.0-SNAPSHOT</version>
 
   <name>Pembana™ Image Filters</name>
-  <url>https://github.com/ghillert/image-filters-4j</url>
+  <url>https://github.com/pembana/pembana-image-filters</url>
   <inceptionYear>2025</inceptionYear>
 
   <description>
@@ -30,9 +30,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:https://github.com/ghillert/image-filters-4j.git</connection>
-    <developerConnection>scm:git:https://github.com/ghillert/image-filters-4j.git</developerConnection>
-    <url>https://github.com/ghillert/image-filters-4j</url>
+    <connection>scm:git:https://github.com/pembana/pembana-image-filters.git</connection>
+    <developerConnection>scm:git:https://github.com/pembana/pembana-image-filters.git</developerConnection>
+    <url>https://github.com/pembana/pembana-image-filters</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -161,8 +161,8 @@
             </deploy>
             <release>
               <github>
-                <owner>ghillert</owner>
-                <name>image-filters-4j</name>
+                <owner>pembana</owner>
+                <name>pembana-image-filters</name>
                 <changelog>
                   <formatted>ALWAYS</formatted>
                 </changelog>

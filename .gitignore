@@ -34,3 +34,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Local diagnostic output
+/.output.txt
+/checkstyle_output.txt

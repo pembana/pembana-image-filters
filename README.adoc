@@ -3,9 +3,16 @@
 
 = Pembana™ Image Filters
 
-image:https://github.com/ghillert/image-filters-4j/actions/workflows/maven.yml/badge.svg?branch=main[Java CI with Maven, link="https://github.com/ghillert/image-filters-4j/actions/workflows/maven.yml"]
+[IMPORTANT]
+====
+*New home:* This project was formerly `ghillert/image-filters-4j` and is now maintained as
+*Pembana™ Image Filters* at https://github.com/pembana/pembana-image-filters[`pembana/pembana-image-filters`].
+Please update your bookmarks and Git remotes.
+====
+
+image:https://github.com/pembana/pembana-image-filters/actions/workflows/maven.yml/badge.svg?branch=main[Java CI with Maven, link="https://github.com/pembana/pembana-image-filters/actions/workflows/maven.yml"]
 image:https://img.shields.io/maven-central/v/com.pembana.imaging/pembana-image-filters[Maven Central Version]
-image:https://img.shields.io/github/license/ghillert/image-filters-4j[GitHub License]
+image:https://img.shields.io/github/license/pembana/pembana-image-filters[GitHub License]
 
 Java image-processing filters maintained by Pembana™, based on Jerry Huxtable’s JHLabs filters.
 
@@ -16,6 +23,20 @@ This repo contains all classes as available via the download at:
 http://www.jhlabs.com/ip/filters/download.html
 
 == Getting Started
+
+=== Migrating from image-filters-4j
+
+For an existing checkout, update the remote:
+
+[source,shell]
+----
+git remote set-url origin https://github.com/pembana/pembana-image-filters.git
+----
+
+The Maven coordinates are now `com.pembana.imaging:pembana-image-filters`.
+If you previously used `com.hillert:image-filters-4j`, update your dependency declaration
+using the examples below. GitHub's repository redirects do not redirect Maven dependencies.
+The Java packages and filter APIs are unchanged by the repository move.
 
 === Maven
 
