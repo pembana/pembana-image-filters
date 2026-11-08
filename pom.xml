@@ -40,6 +40,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
+    <maven-central.active>NEVER</maven-central.active>
 
     <assertj.version>3.27.7</assertj.version>
     <junit.version>6.0.3</junit.version>
@@ -141,7 +142,7 @@
               <maven>
                 <mavenCentral>
                   <sonatype>
-                    <active>NEVER</active>
+                    <active>${maven-central.active}</active>
                     <url>https://central.sonatype.com/api/v1/publisher</url>
                     <stagingRepositories>target/staging-deploy</stagingRepositories>
                   </sonatype>
@@ -166,6 +167,9 @@
                 <changelog>
                   <formatted>ALWAYS</formatted>
                 </changelog>
+                <prerelease>
+                  <pattern>(?i).*-(m|rc)[0-9]+</pattern>
+                </prerelease>
               </github>
             </release>
           </jreleaser>
