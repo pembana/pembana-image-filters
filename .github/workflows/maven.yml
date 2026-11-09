@@ -4,11 +4,30 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_call:
+    inputs:
+      release-artifact-id:
+        type: string
+      release-tag:
+        type: string
+      release-revision:
+        type: string
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - uses: ./.github/actions/checkout-release
+      if: inputs.release-artifact-id != ''
+      with:
+        artifact-id: ${{ inputs.release-artifact-id }}
+        tag: ${{ inputs.release-tag }}
+        revision: ${{ inputs.release-revision }}
     - name: Set up JDK 25
       uses: actions/setup-java@v5
       with:
@@ -16,4 +35,4 @@ jobs:
         distribution: 'liberica'
         cache: maven
     - name: Build with Maven
-      run: mvn -B --no-transfer-progress package --file pom.xml
+      run: ./mvnw --batch-mode --no-transfer-progress clean verify

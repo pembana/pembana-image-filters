@@ -40,7 +40,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <maven-central.active>NEVER</maven-central.active>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <jreleaser-maven-plugin.version>1.27.0</jreleaser-maven-plugin.version>
 
     <assertj.version>3.27.7</assertj.version>
     <junit.version>6.0.3</junit.version>
@@ -49,7 +50,7 @@
     <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
     <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
     <spring-javaformat-checkstyle.version>0.0.47</spring-javaformat-checkstyle.version>
-    <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
+    <versions-maven-plugin.version>2.23.0</versions-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -77,6 +78,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-help-plugin</artifactId>
+          <version>3.5.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.15.0</version>
         </plugin>
@@ -89,11 +95,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
           <version>3.4.0</version>
-        </plugin>
-        <plugin>
-          <groupId>org.jreleaser</groupId>
-          <artifactId>jreleaser-maven-plugin</artifactId>
-          <version>1.22.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -130,52 +131,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.jreleaser</groupId>
-        <artifactId>jreleaser-maven-plugin</artifactId>
-        <configuration>
-          <jreleaser>
-            <signing>
-              <active>ALWAYS</active>
-              <armored>true</armored>
-            </signing>
-            <deploy>
-              <maven>
-                <mavenCentral>
-                  <sonatype>
-                    <active>${maven-central.active}</active>
-                    <url>https://central.sonatype.com/api/v1/publisher</url>
-                    <stagingRepositories>target/staging-deploy</stagingRepositories>
-                  </sonatype>
-                </mavenCentral>
-                <nexus2>
-                  <snapshot-deploy>
-                    <active>SNAPSHOT</active>
-                    <snapshotUrl>https://central.sonatype.com/repository/maven-snapshots/</snapshotUrl>
-                    <applyMavenCentralRules>true</applyMavenCentralRules>
-                    <snapshotSupported>true</snapshotSupported>
-                    <closeRepository>true</closeRepository>
-                    <releaseRepository>true</releaseRepository>
-                    <stagingRepositories>target/staging-deploy</stagingRepositories>
-                  </snapshot-deploy>
-                </nexus2>
-              </maven>
-            </deploy>
-            <release>
-              <github>
-                <owner>pembana</owner>
-                <name>pembana-image-filters</name>
-                <changelog>
-                  <formatted>ALWAYS</formatted>
-                </changelog>
-                <prerelease>
-                  <pattern>(?i).*-(m|rc)[0-9]+</pattern>
-                </prerelease>
-              </github>
-            </release>
-          </jreleaser>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.6.2</version>
@@ -202,7 +157,8 @@
     <profile>
       <id>publication</id>
       <properties>
-        <altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
+        <maven.deploy.skip>false</maven.deploy.skip>
+        <altDeploymentRepository>local::file:${project.build.directory}/staging-deploy</altDeploymentRepository>
       </properties>
       <build>
         <defaultGoal>deploy</defaultGoal>
@@ -241,6 +197,52 @@
                 </configuration>
               </execution>
             </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.jreleaser</groupId>
+            <artifactId>jreleaser-maven-plugin</artifactId>
+            <version>${jreleaser-maven-plugin.version}</version>
+            <inherited>false</inherited>
+            <configuration>
+              <jreleaser>
+                <signing>
+                  <active>ALWAYS</active>
+                  <pgp>
+                    <active>ALWAYS</active>
+                    <armored>true</armored>
+                    <mode>MEMORY</mode>
+                  </pgp>
+                </signing>
+                <deploy>
+                  <maven>
+                    <mavenCentral>
+                      <sonatype>
+                        <active>RELEASE</active>
+                        <url>https://central.sonatype.com/api/v1/publisher</url>
+                        <stagingRepositories>target/staging-deploy</stagingRepositories>
+                      </sonatype>
+                    </mavenCentral>
+                    <nexus2>
+                      <snapshot-deploy>
+                        <active>SNAPSHOT</active>
+                        <snapshotUrl>https://central.sonatype.com/repository/maven-snapshots/</snapshotUrl>
+                        <applyMavenCentralRules>true</applyMavenCentralRules>
+                        <snapshotSupported>true</snapshotSupported>
+                        <closeRepository>true</closeRepository>
+                        <releaseRepository>true</releaseRepository>
+                        <stagingRepositories>target/staging-deploy</stagingRepositories>
+                      </snapshot-deploy>
+                    </nexus2>
+                  </maven>
+                </deploy>
+                <release>
+                  <github>
+                    <owner>pembana</owner>
+                    <name>pembana-image-filters</name>
+                  </github>
+                </release>
+              </jreleaser>
+            </configuration>
           </plugin>
         </plugins>
       </build>

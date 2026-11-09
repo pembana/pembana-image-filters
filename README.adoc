@@ -314,13 +314,9 @@ The following filters are included in this library:
 
 == Cutting a release
 
-In GitHub Actions, run the *release* workflow on `main`. For a milestone, enter a release version such as `1.0.0-M2` and a next development version such as `1.0.0-SNAPSHOT`.
-
-The workflow builds and tags the release commit, publishes to Maven Central and GitHub, then pushes the release and next snapshot commits to `main`. If publishing fails, rerun the failed workflow while `main` is still at the original commit. The retry uses the existing release tag.
-
-Configure the repository secrets `JRELEASER_MAVENCENTRAL_USERNAME` and `JRELEASER_MAVENCENTRAL_PASSWORD` with a Central Portal token for the publishing namespace, and configure `JRELEASER_GPG_PUBLIC_KEY`, `JRELEASER_GPG_SECRET_KEY`, and `JRELEASER_GPG_PASSPHRASE` for signing. The workflow's GitHub token needs permission to push to `main` and create release tags.
-
-Use the separate *release snapshot* workflow to publish the current snapshot.
+Use the *Maven publication* workflow for snapshots and full releases.
+See link:docs/releasing.md[Versioning and Maven publication] for the shared
+Pembana release process, environment secrets, and command-line instructions.
 
 == License
 
