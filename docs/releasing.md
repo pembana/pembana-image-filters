@@ -44,8 +44,12 @@ publish the version in the POM. On a snapshot revision this publishes a snapshot
 ## Full release
 
 1. Update the `## Unreleased` section in [CHANGELOG.md](../CHANGELOG.md) on
-   `main`. Start with a short summary and add entries under level-three
-   headings. The workflow uses this text for GitHub release notes.
+   `main`. Start with a short summary and group entries under level-three
+   headings such as **⭐ New Features**, **🐞 Bug Fixes**,
+   **📔 Documentation**, and **🔨 Dependency Upgrades**. Start each change
+   bullet with a linked short commit hash in code formatting, followed by
+   the description. The workflow keeps that order in the GitHub release notes
+   and skips categories with no entries.
 2. Dispatch **Maven publication** on `main` with both versions filled in.
    For `1.0.0-M2`, use `1.0.0-SNAPSHOT` as the next snapshot. For a stable
    `1.0.0` release, choose a later snapshot such as `1.0.1-SNAPSHOT`.
