@@ -24,6 +24,8 @@ http://www.jhlabs.com/ip/filters/download.html
 
 == Getting Started
 
+Build from source with JDK 21 or later using `./mvnw clean verify`. The library targets Java 17.
+
 === Migrating from image-filters-4j
 
 For an existing checkout, update the remote:
