@@ -105,7 +105,7 @@ public class ArrayColormap implements Colormap, Cloneable, java.io.Serializable 
 	/**
 	 * Set the color at "index" to "color". Entries are interpolated linearly from
 	 * the existing entries at "firstIndex" and "lastIndex" to the new entry.
-	 * firstIndex < index < lastIndex must hold.
+	 * The condition {@code firstIndex < index < lastIndex} must hold.
 	 * @param index      the index of the color to set
 	 * @param firstIndex the first index of the range to interpolate
 	 * @param lastIndex  the last index of the range to interpolate
