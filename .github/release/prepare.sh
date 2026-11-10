@@ -56,7 +56,7 @@ sed "s/^## Unreleased$/## $release_version/" CHANGELOG.md > "$output/changelog.m
 cp "$output/changelog.md" CHANGELOG.md
 
 set_version() {
-  env -u JRELEASER_GPG_PASSPHRASE ./mvnw -B -ntp org.codehaus.mojo:versions-maven-plugin:2.23.0:set \
+  env -u JRELEASER_GPG_PASSPHRASE ./mvnw -B -ntp -Pversions versions:set \
     "-DnewVersion=$1" -DgenerateBackupPoms=false
 }
 
