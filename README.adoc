@@ -1,4 +1,4 @@
-:main-release-version: 1.0.0-M1
+:main-release-version: 1.0.0-M2
 :main-snapshot-version: 1.0.0-SNAPSHOT
 
 = Pembana™ Image Filters
@@ -14,19 +14,14 @@ image:https://github.com/pembana/pembana-image-filters/actions/workflows/maven.y
 image:https://img.shields.io/maven-central/v/com.pembana.imaging/pembana-image-filters[Maven Central Version]
 image:https://img.shields.io/github/license/pembana/pembana-image-filters[GitHub License]
 
-Java image-processing filters maintained by Pembana™, based on Jerry Huxtable’s JHLabs filters.
-
-I did not see any Mavenized version of Jerry Huxtable's *Java Image Processing Classes*.
-
-This repo contains all classes as available via the download at:
-
-http://www.jhlabs.com/ip/filters/download.html
+Java image-processing filters maintained by Pembana™, based on
+http://www.jhlabs.com/ip/filters/download.html[Jerry Huxtable’s JHLabs filters].
 
 == Getting Started
 
 Build from source with JDK 21 or later using `./mvnw clean verify`. The library targets Java 17.
 
-=== Migrating from image-filters-4j
+=== Upgrading from 1.0.0-M1
 
 For an existing checkout, update the remote:
 
@@ -35,14 +30,18 @@ For an existing checkout, update the remote:
 git remote set-url origin https://github.com/pembana/pembana-image-filters.git
 ----
 
-The Maven coordinates are now `com.pembana.imaging:pembana-image-filters`.
-If you previously used `com.hillert:image-filters-4j`, update your dependency declaration
-using the examples below. GitHub's repository redirects do not redirect Maven dependencies.
-The Java packages and filter APIs are unchanged by the repository move.
+M2 uses `com.pembana.imaging:pembana-image-filters` in place of
+`com.hillert:image-filters-4j`. Update your Maven or Gradle dependency using the
+examples below. Java imports still use the `com.jhlabs` packages.
+
+Several public fields became private in M2. Use the available accessors, such as
+`DitherFilter.setColorDither`, `LightFilter.setNormalEvaluator`, and the `WarpGrid`
+grid accessors. See link:CHANGELOG.md[the changelog] for the full upgrade notes.
 
 === Maven
 
-To use the filters in your Maven project, add the following dependency to your `pom.xml`:
+The dependency examples below use version {main-release-version}.
+In a Maven project, add this dependency to `pom.xml`.
 
 [source,xml,subs="verbatim,quotes,attributes"]
 ----
@@ -316,7 +315,8 @@ The following filters are included in this library:
 
 == Cutting a release
 
-Use the *Maven publication* workflow for snapshots and full releases.
+Use the *Maven publication* workflow for snapshots, milestones, release candidates,
+and stable releases.
 See link:docs/releasing.md[Versioning and Maven publication] for the shared
 Pembana release process, environment secrets, and command-line instructions.
 

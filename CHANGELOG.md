@@ -4,9 +4,9 @@
 
 ## 1.0.0-M2
 
-This milestone moves the project to the Pembana organization, adds named
-blend modes, and expands filter test coverage. It also updates the build
-toolchain and introduces signed releases with a dry-run workflow.
+This milestone moves the project to the Pembana organization, documents
+blend mode constants, and expands filter test coverage. It also updates the
+build toolchain and introduces signed releases with a dry-run workflow.
 
 ### ⚠️ Upgrading
 
@@ -22,7 +22,6 @@ toolchain and introduces signed releases with a dry-run workflow.
 
 ### ⭐ New Features
 
-- [`c271b03`](https://github.com/pembana/pembana-image-filters/commit/c271b03093d3b2287cb8671c6f0134a607865fd4) Add named blend modes and improve Javadoc for filters and composites.
 - [`a4535a3`](https://github.com/pembana/pembana-image-filters/commit/a4535a3ee6592714a926b73817e88040146b579b) Add getters for the axis and angle in `AxisAngle4f`.
 
 ### 🐞 Bug Fixes
@@ -31,6 +30,7 @@ toolchain and introduces signed releases with a dry-run workflow.
 
 ### 📔 Documentation
 
+- [`c271b03`](https://github.com/pembana/pembana-image-filters/commit/c271b03093d3b2287cb8671c6f0134a607865fd4) Document blend mode constants and expand Javadoc for filters and composites.
 - [`0fb6ca9`](https://github.com/pembana/pembana-image-filters/commit/0fb6ca90f98f22f989c5639e5d890351d84b9cb3) Document Maven and Gradle setup for releases and snapshots.
 - [`d1e874a`](https://github.com/pembana/pembana-image-filters/commit/d1e874ae58a98d467136d8790d65fdcfda3e1ee6) Document GitHub Actions and command-line publication in the [release guide](docs/releasing.md).
 

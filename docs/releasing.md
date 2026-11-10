@@ -50,14 +50,16 @@ publish the version in the POM. On a snapshot revision this publishes a snapshot
    bullet with a linked short commit hash in code formatting, followed by
    the description. The workflow keeps that order in the GitHub release notes
    and skips categories with no entries.
-2. Dispatch **Maven publication** on `main` with both versions filled in.
+2. Update `main-release-version` and `main-snapshot-version` in
+   [README.adoc](../README.adoc) on `main` to match the release and next snapshot.
+3. Dispatch **Maven publication** on `main` with both versions filled in.
    For `1.0.0-M2`, use `1.0.0-SNAPSHOT` as the next snapshot. For a stable
    `1.0.0` release, choose a later snapshot such as `1.0.1-SNAPSHOT`.
    The current snapshot must have the same base version as the release.
-3. Keep **dry-run** enabled for the first run. Review the rendered release
+4. Keep **dry-run** enabled for the first run. Review the rendered release
    notes, source revision, Maven CI results, and signed bundle. If `main`
    advances, review a new dry run.
-4. Dispatch the same inputs with **dry-run** unchecked. JReleaser uploads the
+5. Dispatch the same inputs with **dry-run** unchecked. JReleaser uploads the
    signed bundle for validation. After Central validates it, the workflow
    atomically pushes the signed release and next snapshot commits and the
    `v<version>` tag. It then publishes the same Central deployment and posts
@@ -100,7 +102,8 @@ exports before publishing.
 ### Prepare a full release locally
 
 For the command-line equivalent of the workflow, start with a clean checkout
-of current `main` and configure Git to sign with your registered OpenPGP key.
+of current `main` that includes the changelog and README updates. Configure Git
+to sign with your registered OpenPGP key.
 Use the same preparation script as CI. It creates both signed commits, the
 signed tag, and rendered release notes locally.
 
