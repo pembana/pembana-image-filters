@@ -1,6 +1,6 @@
 # Pembana Image Filters changelog
 
-## Unreleased
+## 1.0.0-M2
 
 This milestone moves the project to the Pembana organization, adds named
 blend modes, and expands filter test coverage. It also updates the build
