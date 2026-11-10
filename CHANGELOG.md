@@ -1,5 +1,7 @@
 # Pembana Image Filters changelog
 
+## Unreleased
+
 ## 1.0.0-M2
 
 This milestone moves the project to the Pembana organization, adds named

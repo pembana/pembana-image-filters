@@ -4,7 +4,7 @@
 
   <groupId>com.pembana.imaging</groupId>
   <artifactId>pembana-image-filters</artifactId>
-  <version>1.0.0-M2</version>
+  <version>1.0.0-SNAPSHOT</version>
 
   <name>Pembana™ Image Filters</name>
   <url>https://github.com/pembana/pembana-image-filters</url>
